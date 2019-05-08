@@ -1,0 +1,12 @@
+Big Goals
+[] Facestream: online: Gender, Age to database
+[] Returning faces: offline
+
+Daily goals:
+
+[x] 2019-04-02 export facestream to Excel
+[x] 2019-04-03 facestream: refactor for face tracker.
+[x] imitate video sequence
+[x] 2019-04-17 add face identify to facestream
+[x] 2019-04-17 clean_cloud.py
+[] 2019-04-28 define quality metrics for returning faces: TF, TP during facestream

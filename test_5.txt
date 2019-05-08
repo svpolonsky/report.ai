@@ -1,0 +1,17 @@
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Aaron_Eckhart/0/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Aaron_Tippin/0/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Abba_Eban/0/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Abdel_Aziz_Al-Hakim/0/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Agnes_Bruckner/0/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Ahmad_Masood/0/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Aaron_Eckhart/1/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Aaron_Tippin/1/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Abba_Eban/5/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Abdel_Aziz_Al-Hakim/1/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Agnes_Bruckner/1/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Ahmad_Masood/2/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Abdel_Aziz_Al-Hakim/4/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Agnes_Bruckner/2/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Agnes_Bruckner/4/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Ahmad_Masood/3/%05d.jpg
+/home/stas/Projects/faces/YouTubeFaces_05d/frame_images_DB/Ahmad_Masood/4/%05d.jpg
