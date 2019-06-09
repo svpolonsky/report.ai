@@ -1,6 +1,15 @@
+Azure for Python developers
+https://docs.microsoft.com/en-us/python/azure/?view=azure-python
+
 Big Goals
-[] Facestream: online: Gender, Age to database
-[] Returning faces: offline
+[] Django website on Azure (superuser admin, password admin
+[] connect IP camera to website
+[x] 2019-05-12 Facestream_0.1: online: Gender, Age to database
+[x] 2019-05-12 Returning faces: offline_0.1: accuracy 65% on YouTube dataset
+[] Datasets:
+(a) Higher face image quality means better detection and recognition precision.
+Please consider high-quality faces: frontal, clear, and face size is 200x200 pixels (100 pixels between eyes) or bigger.
+(b) Faces are detectable when its size is 36x36 to 4096x4096 pixels
 
 Daily goals:
 
@@ -9,4 +18,7 @@ Daily goals:
 [x] imitate video sequence
 [x] 2019-04-17 add face identify to facestream
 [x] 2019-04-17 clean_cloud.py
-[] 2019-04-28 define quality metrics for returning faces: TF, TP during facestream
+[x] 2019-04-28 define quality metrics for returning faces: TF, TP during facestream
+[x] 2019-05-08 learn how to run Python in Azure cloud: goal migration of my app to cloud
+[] 2019-05-13 Learn Django using Django 2 by Example by Antonio Melé
+superuser stas, password stas64

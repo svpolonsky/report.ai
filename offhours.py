@@ -13,7 +13,7 @@ SUBSCRIPTION_KEY='aa80855ca8004d7aabf0a37b930c137d'
 CF.Key.set(SUBSCRIPTION_KEY)
 BASE_URL = 'https://northeurope.api.cognitive.microsoft.com/face/v1.0/'
 CF.BaseUrl.set(BASE_URL)
-
+small_delay=0.1
 
 def offhours():
     # CONNECT TO GROUP
@@ -44,7 +44,7 @@ def offhours():
             # move track to cloud as person
             # use localid (aka trackid) as person name since I don't know real names
             try:
-                time.sleep(3)
+                time.sleep(small_delay)
                 ans=CF.large_person_group_person.create(group_id,localid)
             except BaseException as e:
                 print(e)
@@ -65,7 +65,7 @@ def offhours():
             if cloudfaceid is None:
                 path=crmdb.face_image_path(localfaceid)
                 try:
-                    time.sleep(3)
+                    time.sleep(small_delay)
                     ans=CF.large_person_group_person_face.add(path,group_id,cloudid)
                     cloudfaceid=ans['persistedFaceId']
                 except BaseException as e:
@@ -78,15 +78,22 @@ def offhours():
                 conn.commit()
 
     conn.close()
-    CF.large_person_group.train(group_id)
+    try:
+        CF.large_person_group.train(group_id)
+    except:
+        logging.error('failed to train')
+        return
     i=0
     while True:
         logging.info('group training: {}'.format(i))
         i+=1
-        time.sleep(5)
-        res=CF.large_person_group.get_status(group_id)
-        if res['status']=='succeeded':
-            break
+        try:
+            time.sleep(5)
+            res=CF.large_person_group.get_status(group_id)
+            if res['status']=='succeeded':
+                break
+        except:
+            logging.error('connection problem')
 
 if __name__ == "__main__":
     offhours()

@@ -26,6 +26,8 @@ CF.Key.set(SUBSCRIPTION_KEY)
 BASE_URL = 'https://northeurope.api.cognitive.microsoft.com/face/v1.0/'
 CF.BaseUrl.set(BASE_URL)
 
+small_delay=0.1
+
 
 
 
@@ -34,47 +36,7 @@ CF.BaseUrl.set(BASE_URL)
 #print(result)
 
 
-def group_run(image_paths):
-    """GroupRun.
 
-    This will group faces based on similarity in a group, and will place faces that don't have any other similar faces in a messy group.
-    """
-
-    faces = {}
-
-    for image_path in paths:
-        logging.info( str(image_path) )
-        # Detect faces from target image path, 3sec delay for free Azure service
-        time.sleep(3)
-        detected_faces = CF.face.detect(image_path)
-        logging.info( detected_faces )
-        # Add detected face id to faces.
-        if not detected_faces:
-            print("No face detected in {}".format(image_path))
-            continue
-        n_faces=len(detected_faces)
-        logging.info("Detected {} faces".format(n_faces))
-        if n_faces != 1:
-            logging.info('Expect only one face on image')
-            continue
-        logging.info(detected_faces[0]['faceId'])
-        faces[detected_faces[0]['faceId']] = testset.person_name(image_path)
-
-    # Call grouping, the grouping result is a group collection, each group contains similar faces.
-    group_result = CF.face.group(face_ids=list(faces.keys()))
-    print('group: ',group_result)
-    # Face groups containing faces that are similar.
-    for i, group in enumerate(group_result['groups']):
-        print("Found face group {}: {}.".format(
-            i + 1,
-            " ".join([faces[face_id] for face_id in group])
-        ))
-
-    # Messy group contains all faces which are not similar to any other faces.
-    if group_result['messyGroup']:
-        print ("Found messy face group: {}.".format(
-            " ".join([faces[face_id] for face_id in group_result['messyGroup']])
-        ))
 
 def centroid(rect):
     cX=int(rect['left']+rect['width']/2.0)
@@ -122,12 +84,16 @@ def analyze_face(image_path,tracked_persons):
     #image.show()
     # Detect faces from target image path, 3sec delay for free Azure service
     try:
-        time.sleep(3)
+        time.sleep(small_delay)
         detected_faces = CF.face.detect(image_path,attributes=crmdb.faceAttributes)
     except ConnectionError:
         # @@@ I need to process this: save image locally for postprocessing
         logging.error('connection error: extend the code to store image locally for postprocessing')
         detected_faces=None
+    except BaseException as e:
+        detected_faces=None
+        logging.error('BaseException')
+        print(e)
 
     #print('detected faces:',detected_faces)
     # Add detected face id to faces.
@@ -143,7 +109,7 @@ def analyze_face(image_path,tracked_persons):
     faceids=[face['faceId'] for face in filtered_faces]
     # @@@ use configuration to get large_person_group_id; later use parameter threshold
     try:
-        time.sleep(3)
+        time.sleep(small_delay)
         identified_faces=CF.face.identify(faceids,large_person_group_id='group-000',max_candidates_return=2)
     except BaseException as e:
         identified_faces=[{'faceId': None, 'candidates': []}] * len(faceids)
@@ -213,7 +179,7 @@ def test_video(videos):
         trackid='track-'+str(uuid.uuid1())
         tracking_start=crmdb.now()
         frame_number=0
-        for frame_number in [30,60]:
+        for frame_number in [30]:
             path=testset.frame_path(video, frame_number)
             if path.is_file():
                 logging.debug(path)
